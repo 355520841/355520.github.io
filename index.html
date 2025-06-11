@@ -1,13 +1,90 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>同学录主页</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>同学录</title>
+  <style>
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      max-width: 1000px;
+      margin: 20px auto;
+    }
+    .card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      overflow: hidden;
+      text-align: center;
+      transition: transform 0.2s ease;
+    }
+    .card:hover {
+      transform: scale(1.03);
+    }
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+    .card h3 {
+      margin: 10px 0 5px;
+      font-size: 1.1em;
+    }
+    .card p {
+      color: #888;
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
+    .card a {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #3498db;
+      text-decoration: none;
+    }
+    .card a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
 <body>
-  <h1>欢迎来到同学录</h1>
-  <p>点击头像查看详细资料</p>
+  <h1>我们的同学录</h1>
+  <div class="container">
+    <div class="card">
+      <img src="https://source.unsplash.com/random/300x200?face" alt="张三">
+      <h3>张三</h3>
+      <p>初三·1班</p>
+      <a href="#">查看详情</a>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/random/300x200?portrait" alt="李四">
+      <h3>李四</h3>
+      <p>初三·1班</p>
+      <a href="#">查看详情</a>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/random/300x200?student" alt="王五">
+      <h3>王五</h3>
+      <p>初三·2班</p>
+      <a href="#">查看详情</a>
+    </div>
+    <div class="card">
+      <img src="https://source.unsplash.com/random/300x200?people" alt="赵六">
+      <h3>赵六</h3>
+      <p>初三·2班</p>
+      <a href="#">查看详情</a>
+    </div>
+  </div>
 </body>
 </html>
