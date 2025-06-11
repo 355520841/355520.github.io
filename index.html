@@ -11,7 +11,7 @@
       --card-bg: white;
       --card-text: #444;
       --divider: #ccc;
-      --blur-intensity: 10px;
+      --blur-intensity: 8px;
       --sidebar-width: 250px;
       --sidebar-bg: white;
       --sidebar-text: #222;
@@ -52,9 +52,9 @@
 
     .container {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 16px;
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
@@ -64,18 +64,19 @@
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       overflow: hidden;
       position: relative;
-      height: 200px;
-      transition: all 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 180px;
       cursor: pointer;
     }
 
     .card:hover {
       transform: scale(1.02);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
     }
 
     .card-image {
       width: 100%;
-      height: 100%;
+      height: 180px;
       object-fit: cover;
       transition: opacity 0.4s ease, filter 0.4s ease;
     }
@@ -86,6 +87,7 @@
       left: 0;
       width: 100%;
       height: 100%;
+      background-color: rgba(0,0,0,0.5);
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -98,20 +100,26 @@
       pointer-events: none;
     }
 
-    .card.show-details {
-      height: auto;
-    }
-
     .card.show-details .card-content {
       opacity: 1;
       pointer-events: auto;
-      background: rgba(0, 0, 0, 0.5);
     }
 
     .card h3, .card p {
       color: white;
       text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-      margin: 5px;
+      margin: 4px 0;
+    }
+
+    .card-content .btn {
+      margin-top: 6px;
+      padding: 6px 12px;
+      background-color: #3498db;
+      border: none;
+      border-radius: 4px;
+      color: white;
+      font-size: 14px;
+      cursor: pointer;
     }
 
     .card-bg {
@@ -130,29 +138,6 @@
 
     .card.show-details .card-bg {
       opacity: 1;
-    }
-
-    .extra-content {
-      padding: 10px;
-      background: var(--card-bg);
-      color: var(--card-text);
-      text-align: left;
-    }
-
-    .extra-content img {
-      max-width: 100%;
-      border-radius: 8px;
-      margin-top: 10px;
-    }
-
-    .view-original {
-      display: inline-block;
-      margin-top: 8px;
-      padding: 6px 12px;
-      background: #3498db;
-      color: white;
-      border-radius: 6px;
-      text-decoration: none;
     }
 
     .sidebar {
@@ -185,6 +170,7 @@
       color: var(--sidebar-text);
       border-radius: 50%;
       border: 1px solid var(--divider);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -246,11 +232,8 @@
         <h3>司臻</h3>
         <p>班主任</p>
         <p>故事：用戒尺教育张扬。</p>
-      </div>
-      <div class="extra-content">
-        <p>更多描述：他是我们敬爱的班主任，总是严厉又温柔。</p>
-        <img src="https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg" alt="原图预览">
-        <a class="view-original" target="_blank" href="https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg">查看原图</a>
+        <button class="btn" onclick="event.stopPropagation(); window.open('https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg')">查看原图</button>
+        <button class="btn" onclick="event.stopPropagation(); window.location.href='https://example.com/detail1'">跳转详情</button>
       </div>
     </div>
   </div>
@@ -264,18 +247,13 @@
         <h3>徐子轩</h3>
         <p>学生</p>
         <p>体育表现一般。</p>
-      </div>
-      <div class="extra-content">
-        <p>兴趣爱好：喜欢历史和音乐，经常参加话剧社。</p>
-        <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="原图预览">
-        <a class="view-original" target="_blank" href="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png">查看原图</a>
+        <button class="btn" onclick="event.stopPropagation(); window.open('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png')">查看原图</button>
+        <button class="btn" onclick="event.stopPropagation(); window.location.href='https://example.com/detail2'">跳转详情</button>
       </div>
     </div>
   </div>
 
-  <!-- 圆形按钮 -->
   <div class="sidebar-toggle-btn" onclick="toggleSidebar()">≡</div>
-
   <div class="sidebar" id="sidebar">
     <button class="sidebar-button" onclick="toggleDark()">🌙 夜间模式</button>
     <button class="sidebar-button" onclick="toggleMusic()">🎵 音乐播放器</button>
