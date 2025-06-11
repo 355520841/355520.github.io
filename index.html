@@ -227,8 +227,8 @@
   <div class="section-title">11班</div>
   <div class="container">
     <div class="card" onclick="toggleDetails(this)">
-      <img class="card-image" src="https://img2.baidu.com/it/u=3932126631,3451392321&fm=253&fmt=auto&app=138&f=JPEG" />
-      <div class="card-bg" style="background-image: url('https://img2.baidu.com/it/u=3932126631,3451392321&fm=253&fmt=auto&app=138&f=JPEG');"></div>
+      <img class="card-image" src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" />
+      <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png');"></div>
       <div class="card-content">
         <h3>徐子轩</h3>
         <p>学生</p>
@@ -243,6 +243,7 @@
   <div class="sidebar" id="sidebar">
     <button class="sidebar-button" onclick="toggleDark()">🌙 夜间模式</button>
     <button class="sidebar-button" onclick="toggleMusic()">🎵 音乐播放器</button>
+    <button class="sidebar-button" onclick="togglek()">❉ 关于作者</button>
   </div>
 
   <div class="music-player" id="musicPlayer">
@@ -266,7 +267,9 @@
     function toggleDark() {
       document.body.classList.toggle("dark");
     }
-
+function togglek() {
+    window.location.href = "https://355520841.github.io/author.html";
+}
     function toggleMusic() {
       const box = document.getElementById("musicPlayer");
       box.classList.toggle("show");
