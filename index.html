@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>2025年毕业</title>
+  <title>2025年毕业档案</title>
   <style>
     :root {
       --bg: #f0f2f5;
@@ -11,36 +11,31 @@
       --card-bg: white;
       --card-text: #444;
       --divider: #ccc;
-      --blur-intensity: 10px;
     }
 
     body.dark {
-      --bg: #181818;
-      --text: #f0f0f0;
-      --card-bg: #2c2c2c;
-      --card-text: #e0e0e0;
+      --bg: #1e1e1e;
+      --text: #eee;
+      --card-bg: #2a2a2a;
+      --card-text: #ccc;
       --divider: #444;
     }
-
+.group-title {
+  font-size: 20px;
+  margin: 30px 10px 10px;
+  color: var(--text);
+}
     body {
+      margin: 0;
+      padding: 20px;
       font-family: "Segoe UI", sans-serif;
       background: var(--bg);
       color: var(--text);
-      margin: 0;
-      padding: 20px;
-      transition: background 0.3s ease, color 0.3s ease;
+      transition: background 0.3s, color 0.3s;
     }
 
     h1 {
       text-align: center;
-      margin-bottom: 40px;
-    }
-
-    .section-title {
-      font-size: 1.4em;
-      margin: 40px 0 10px;
-      border-bottom: 2px solid var(--divider);
-      padding-bottom: 6px;
     }
 
     .container {
@@ -48,264 +43,180 @@
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
       max-width: 1000px;
-      margin: 0 auto;
+      margin: 20px auto;
     }
 
     .card {
       background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      border-radius: 10px;
       overflow: hidden;
-      text-align: center;
-      position: relative;
-      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
-                  box-shadow 0.3s ease;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+      cursor: pointer;
     }
 
     .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+      transform: scale(1.03);
     }
 
-    .card img {
-      width: 100%;
+    .card-content {
+      position: relative;
       height: 200px;
-      object-fit: cover;
-      display: block;
-      z-index: 0;
-    }
-
-    .card h3 {
-      margin: 10px 0 5px;
-      transition: transform 0.3s ease;
-    }
-
-    .card p {
-      color: var(--card-text);
-      font-size: 0.9em;
-      margin-bottom: 10px;
-      transition: transform 0.3s ease;
-    }
-
-    .toggle-btn {
-      background: #3498db;
-      color: white;
-      border: none;
-      padding: 6px 12px;
-      border-radius: 6px;
-      margin-bottom: 10px;
-      cursor: pointer;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .toggle-btn:hover {
-      background: #2980b9;
-    }
-
-    .toggle-btn:active {
-      transform: scale(0.95);
-    }
-
-    .details-container {
-      max-height: 0;
       overflow: hidden;
-      transition: max-height 0.5s ease;
     }
 
-    .card.show-details .details-container {
-      max-height: 500px;
+    .card-content img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: filter 0.3s ease, transform 0.3s ease;
     }
 
-    .card-bg {
-      background-size: cover;
-      background-position: center;
-      filter: blur(var(--blur-intensity));
-      opacity: 0;
-      height: 200px;
-      transition: opacity 0.4s ease;
-      position: relative;
-      z-index: 0;
-    }
-
-    .card.show-details .card-bg {
-      opacity: 1;
-    }
-
-    .details-content {
-      position: relative;
-      padding: 16px;
-      z-index: 1;
-      opacity: 0;
-      transform: translateY(20px);
-      transition: opacity 0.4s ease, transform 0.4s ease;
-    }
-
-    .card.show-details .details-content {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    .details-content p {
-      margin: 10px 0;
-      color: var(--card-text);
-    }
-
-    .night-toggle,
-    .music-toggle {
-      position: fixed;
-      bottom: 20px;
-      z-index: 9999;
-      padding: 8px 12px;
-      background: #444;
-      color: white;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 14px;
-      transition: background 0.3s ease, transform 0.2s ease;
-    }
-
-    .night-toggle {
-      right: 80px;
-    }
-
-    .music-toggle {
-      right: 20px;
-      background: #3498db;
-      font-size: 16px;
-      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-    }
-
-    .night-toggle:hover,
-    .music-toggle:hover {
-      background: #555;
+    .card.show img {
+      filter: blur(2px) brightness(0.6);
       transform: scale(1.05);
     }
 
-    .music-player {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 350px;
-      height: 430px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transform: translateY(150%);
-      z-index: 9998;
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    .name-label {
+      position: absolute;
+      bottom: 8px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 14px;
+      transition: opacity 0.3s;
     }
 
-    .music-player.show {
+    .card.show .name-label {
+      opacity: 0;
+    }
+
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      opacity: 0;
+      padding: 0 10px;
+      transition: max-height 0.3s ease, opacity 0.3s ease;
+    }
+
+    .card.show .details {
+      max-height: 200px;
+      opacity: 1;
+      padding-bottom: 10px;
+    }
+
+    .details h3 {
+      margin: 10px 0 4px;
+    }
+
+    .tools {
+      position: fixed;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      gap: 10px;
+      z-index: 1000;
+    }
+
+    .tool-btn {
+      background: #444;
+      color: white;
+      padding: 8px 12px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 14px;
+      user-select: none;
+      transition: background 0.3s;
+    }
+
+    .tool-btn:hover {
+      background: #666;
+    }
+
+    .music-box {
+      position: fixed;
+      top: 50px;
+      right: 10px;
+      width: 340px;
+      height: 400px;
+      background: var(--card-bg);
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.2);
+      overflow: hidden;
+      transform: translateY(-120%);
+      transition: transform 0.4s ease;
+      z-index: 999;
+    }
+
+    .music-box.show {
       transform: translateY(0);
     }
 
-    .music-close {
-      position: absolute;
-      top: 6px;
-      right: 10px;
-      color: #888;
-      cursor: pointer;
-      font-size: 20px;
-      transition: color 0.3s ease, transform 0.2s ease;
+    .music-box iframe {
+      width: 100%;
+      height: 100%;
     }
 
-    .music-close:hover {
-      color: #f55;
-      transform: scale(1.1);
-    }
   </style>
 </head>
 <body>
   <h1>2025年毕业视频档案库</h1>
 
-  <div class="section-title">老师</div>
-  <div class="container">
-    <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻" />
-      <div class="details-container">
-        <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg');"></div>
-        <div class="details-content">
-          <h3>司臻</h3>
-          <p>班主任</p>
-          <p>戒尺战神。[故事 具张扬同学以及刘芳的描述这位老师曾用戒尺把张扬打活]</p>
-        </div>
-      </div>
-      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-    </div>
+  <!-- 工具按钮区域 -->
+  <div class="tools">
+    <div class="tool-btn" onclick="toggleDark()">🌙 夜间</div>
+    <div class="tool-btn" onclick="toggleMusic()">🎵 音乐</div>
   </div>
 
-  <div class="section-title">11班</div>
-  <div class="container">
-    <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩" />
-      <div class="details-container">
-        <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png');"></div>
-        <div class="details-content">
-          <h3>徐子轩</h3>
-          <p>学生</p>
-          <p>在体育方面表现不优异，没有获得过多项校内比赛奖项。</p>
-        </div>
-      </div>
-      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-    </div>
-
-    <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林" />
-      <div class="details-container">
-        <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg');"></div>
-        <div class="details-content">
-          <h3>张家林</h3>
-          <p>学生</p>
-          <p>迈克尔杰克逊。</p>
-        </div>
-      </div>
-      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-    </div>
+  <!-- 音乐播放器 -->
+  <div class="music-box" id="musicPlayer">
+    <iframe frameborder="no" marginwidth="0" marginheight="0" allow="autoplay"
+      src="https://music.163.com/outchain/player?type=0&id=1371606416&auto=0&height=430">
+    </iframe>
   </div>
 
-  <div class="section-title">12班</div>
-  <div class="container">
-    <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽" />
-      <div class="details-container">
-        <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg');"></div>
-        <div class="details-content">
-          <h3>鲍泽</h3>
-          <p>学生</p>
-          <p>性格开朗，积极的想当班长。[故事 刘芳说过，他因为没当上班长而躺在地上装死]</p>
-        </div>
-      </div>
-      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-    </div>
-  </div>
-
-  <div class="night-toggle" onclick="toggleDark()">🌙 夜间</div>
-  <div class="music-toggle" onclick="toggleMusic()">🎵 音乐</div>
-
-  <div class="music-player" id="musicPlayer">
-    <div class="music-close" onclick="toggleMusic()">❌</div>
-    <iframe
-      frameborder="no"
-      marginwidth="0"
-      marginheight="0"
-      width="100%"
-      height="100%"
-      src="https://music.163.com/outchain/player?type=0&id=1371606416&auto=0&height=430"
-    ></iframe>
+  <!-- 卡片区域 -->
+  <h2 class="group-title">11班</h2>
+  <div class="container" id="cardContainer">
+    <!-- 以下是可复制模板 ↓↓↓ -->
+    <div class="card" data-name="徐子轩" data-role="学生" data-desc="在体育方面表现不优异，没有获得过多项校内比赛奖项。" data-img="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png"></div>
+    <div class="card" data-name="见言" data-role="学生" data-desc="称号：数学小王子" data-img="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749637331923/mmexport1749615685128.jpg"></div>
+    <div class="card" data-name="齐子杰" data-role="学生" data-desc="外号：妻子 描述：" data-img="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749637331695/mmexport1749615687671.jpg"></div>
+    <div class="card" data-name="张家林" data-role="学生" data-desc="迈克尔杰克逊。" data-img="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg"></div>
+    <!-- ↑↑↑ 可复制粘贴上面这个块改内容 -->
   </div>
 
   <script>
-    function toggleDetails(btn) {
-      const card = btn.closest(".card");
-      const isActive = card.classList.contains("show-details");
+    // 初始化卡片
+    function createCards() {
+      const cards = document.querySelectorAll(".card");
+      cards.forEach(card => {
+        const name = card.dataset.name;
+        const role = card.dataset.role;
+        const desc = card.dataset.desc;
+        const img = card.dataset.img;
 
-      // 关闭所有卡片
-      document.querySelectorAll(".card").forEach(c => c.classList.remove("show-details"));
-      
-      if (!isActive) {
-        card.classList.add("show-details");
-      }
+        card.innerHTML = `
+          <div class="card-content">
+            <img src="${img}" alt="${name}" />
+            <div class="name-label">${name}</div>
+          </div>
+          <div class="details">
+            <h3>${name}</h3>
+            <p>${role}</p>
+            <p>${desc}</p>
+          </div>
+        `;
+
+        card.addEventListener("click", () => {
+          document.querySelectorAll(".card").forEach(c => {
+            if (c !== card) c.classList.remove("show");
+          });
+          card.classList.toggle("show");
+        });
+      });
     }
 
     function toggleDark() {
@@ -315,6 +226,8 @@
     function toggleMusic() {
       document.getElementById("musicPlayer").classList.toggle("show");
     }
+
+    createCards();
   </script>
 </body>
 </html>
