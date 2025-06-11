@@ -1,20 +1,23 @@
-<!DOCTYPE html><html lang="zh">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>2025年视频库</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>2025年视频档案库</title>
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background: linear-gradient(to right, #f0f2f5, #e0e6ed);
+      background: #f0f2f5;
       margin: 0;
       padding: 20px;
     }
+
     h1 {
       text-align: center;
       color: #222;
       margin-bottom: 40px;
     }
+
     .section-title {
       font-size: 1.4em;
       color: #333;
@@ -22,6 +25,7 @@
       border-bottom: 2px solid #ccc;
       padding-bottom: 6px;
     }
+
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -29,90 +33,117 @@
       max-width: 1000px;
       margin: 0 auto;
     }
+
     .card {
-      backdrop-filter: blur(8px);
-      background: rgba(255, 255, 255, 0.75);
-      border-radius: 16px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
       overflow: hidden;
       text-align: center;
       transition: transform 0.2s ease;
-      cursor: pointer;
     }
+
     .card:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
+
     .card img {
       width: 100%;
-      height: 180px;
+      height: 200px;
       object-fit: cover;
     }
+
     .card h3 {
       margin: 10px 0 5px;
       font-size: 1.1em;
     }
+
     .card p {
       color: #666;
       font-size: 0.9em;
       margin-bottom: 10px;
     }
-    .details {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-      background: #fff;
-      padding: 0 10px;
-      font-size: 0.9em;
-      color: #444;
+
+    .card a {
+      display: inline-block;
+      margin-bottom: 12px;
+      color: #3498db;
+      text-decoration: none;
     }
-    .card.active .details {
-      max-height: 100px;
-      padding: 10px;
+
+    .card a:hover {
+      text-decoration: underline;
+    }
+
+    /* 关于作者按钮 */
+    .author-button {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: rgba(0, 0, 0, 0.6);
+      color: white;
+      padding: 10px 14px;
+      border-radius: 8px;
+      font-size: 14px;
+      text-decoration: none;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+      z-index: 999;
+    }
+
+    .author-button:hover {
+      background: rgba(0, 0, 0, 0.75);
     }
   </style>
-  <script>
-    function toggleDetails(card) {
-      card.classList.toggle('active');
-    }
-  </script>
 </head>
 <body>
-  <h1>2025年毕业纪念档案库</h1>  <!-- 👨‍🏫 老师类 -->  <div class="section-title">老师</div>
+  <h1>2025年同学视频档案库</h1>
+
+  <!-- 👨‍🏫 老师类 -->
+  <div class="section-title">老师</div>
   <div class="container">
-    <div class="card" onclick="toggleDetails(this)">
+    <div class="card">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻">
       <h3>司臻</h3>
-      <p>班主任</p>
-      <div class="details">暂无黑历史视频</div>
+      <p>班主任 · 12班</p>
+      <a href="#">查看详情</a>
     </div>
-  </div>  <!-- 🧑‍🎓 11班类 -->  <div class="section-title">11班</div>
+  </div>
+
+  <!-- 🧑‍🎓 11班类 -->
+  <div class="section-title">11班</div>
   <div class="container">
-    <div class="card" onclick="toggleDetails(this)">
+    <div class="card">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩">
       <h3>徐子轩</h3>
       <p>11班</p>
-      <div class="details">视频：暂无链接</div>
+      <a href="#">查看详情</a>
     </div>
-    <div class="card" onclick="toggleDetails(this)">
+    <div class="card">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林">
       <h3>张家林</h3>
       <p>11班</p>
-      <div class="details">黑历史视频：<a href="#">点击播放</a></div>
+      <a href="#">查看详情</a>
     </div>
-    <div class="card" onclick="toggleDetails(this)">
+    <div class="card">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="李乐">
       <h3>李乐</h3>
       <p>11班</p>
-      <div class="details">无视频记录</div>
+      <a href="#">查看详情</a>
     </div>
-  </div>  <!-- 🎒 12班 -->  <div class="section-title">12班</div>
+  </div>
+
+  <!-- 🎒 12班 -->
+  <div class="section-title">12班</div>
   <div class="container">
-    <div class="card" onclick="toggleDetails(this)">
+    <div class="card">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽">
       <h3>鲍泽</h3>
       <p>12班</p>
-      <div class="details">暂无记录</div>
+      <a href="#">查看详情</a>
     </div>
   </div>
+
+  <!-- 关于作者按钮 -->
+  <a class="author-button" href="author.html">关于作者</a>
 </body>
 </html>
