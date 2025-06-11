@@ -7,31 +7,39 @@
   <style>
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f9f9f9;
+      background: #f0f2f5;
       margin: 0;
       padding: 20px;
     }
     h1 {
       text-align: center;
+      color: #222;
+      margin-bottom: 40px;
+    }
+    .section-title {
+      font-size: 1.4em;
       color: #333;
+      margin: 40px 0 10px;
+      border-bottom: 2px solid #ccc;
+      padding-bottom: 6px;
     }
     .container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
       gap: 16px;
       max-width: 1000px;
-      margin: 20px auto;
+      margin: 0 auto;
     }
     .card {
       background: white;
       border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
       overflow: hidden;
       text-align: center;
       transition: transform 0.2s ease;
     }
     .card:hover {
-      transform: scale(1.03);
+      transform: scale(1.02);
     }
     .card img {
       width: 100%;
@@ -43,7 +51,7 @@
       font-size: 1.1em;
     }
     .card p {
-      color: #888;
+      color: #666;
       font-size: 0.9em;
       margin-bottom: 10px;
     }
@@ -59,7 +67,21 @@
   </style>
 </head>
 <body>
-  <h1>重量级</h1>
+  <h1>2025年同学视频档案库</h1>
+
+  <!-- 👨‍🏫 老师类 -->
+  <div class="section-title">👨‍🏫 老师</div>
+  <div class="container">
+    <div class="card">
+      <img src="https://source.unsplash.com/random/300x200?teacher" alt="司臻">
+      <h3>司臻</h3>
+      <p>班主任 · 初三12班</p>
+      <a href="#">查看详情</a>
+    </div>
+  </div>
+
+  <!-- 🧑‍🎓 11班类 -->
+  <div class="section-title">🧑‍🎓 初三·11班</div>
   <div class="container">
     <div class="card">
       <img src="https://pan.tenire.com/view.php/f9b477f48dc719337117abe36c6e9201.webp" alt="徐子轩">
@@ -74,15 +96,20 @@
       <a href="#">查看详情</a>
     </div>
     <div class="card">
-      <img src="https://source.unsplash.com/random/300x200?student" alt="">
-      <h3>司臻</h3>
-      <p>班主任·12班</p>
-      <a href="#">查看详情</a>
-    </div>
-    <div class="card">
-      <img src="https://source.unsplash.com/random/300x200?people" alt="赵六">
+      <img src="https://source.unsplash.com/random/300x200?student" alt="李乐">
       <h3>李乐</h3>
       <p>初三·11班</p>
+      <a href="#">查看详情</a>
+    </div>
+  </div>
+
+  <!-- 🎒 12班 -->
+  <div class="section-title">🎒 12班</div>
+  <div class="container">
+    <div class="card">
+      <img src="https://source.unsplash.com/random/300x200?face" alt="鲍泽">
+      <h3>鲍泽</h3>
+      <p>初三·12班</p>
       <a href="#">查看详情</a>
     </div>
   </div>
