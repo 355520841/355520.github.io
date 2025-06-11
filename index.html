@@ -1,8 +1,7 @@
-<!DOCTYPE html>
-<html lang="zh">
+<!DOCTYPE html><html lang="zh">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>2025年毕业</title>
   <style>
     :root {
@@ -11,290 +10,168 @@
       --card-bg: white;
       --card-text: #444;
       --divider: #ccc;
-      --blur-intensity: 8px;
-      --sidebar-width: 250px;
-      --sidebar-bg: white;
-      --sidebar-text: #222;
-      --sidebar-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
-    }
+      --popup-bg: rgba(0, 0, 0, 0.6);
+    }body.dark {
+  --bg: #181818;
+  --text: #f0f0f0;
+  --card-bg: #2c2c2c;
+  --card-text: #e0e0e0;
+  --divider: #444;
+  --popup-bg: rgba(0, 0, 0, 0.8);
+}
 
-    body.dark {
-      --bg: #181818;
-      --text: #f0f0f0;
-      --card-bg: #2c2c2c;
-      --card-text: #e0e0e0;
-      --divider: #444;
-      --sidebar-bg: #2c2c2c;
-      --sidebar-text: #f0f0f0;
-      --sidebar-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
-    }
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  margin: 0;
+  padding: 20px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 
-    body {
-      font-family: "Segoe UI", sans-serif;
-      background: var(--bg);
-      color: var(--text);
-      margin: 0;
-      padding: 20px;
-      transition: background 0.3s ease, color 0.3s ease;
-    }
+h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
 
-    h1 {
-      text-align: center;
-      margin-bottom: 40px;
-    }
+.container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
 
-    .section-title {
-      font-size: 1.4em;
-      margin: 40px 0 10px;
-      border-bottom: 2px solid var(--divider);
-      padding-bottom: 6px;
-    }
+.card {
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  cursor: pointer;
+  aspect-ratio: 1 / 1;
+  position: relative;
+  transition: transform 0.3s ease;
+}
 
-    .container {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 16px;
-      max-width: 1200px;
-      margin: 0 auto;
-    }
+.card:hover {
+  transform: scale(1.03);
+}
 
-    .card {
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
-      overflow: hidden;
-      position: relative;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-      height: 180px;
-      cursor: pointer;
-    }
+.card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
 
-    .card:hover {
-      transform: scale(1.02);
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-    }
+/* Popup Details */
+.popup-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: var(--popup-bg);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+  animation: fadeIn 0.3s ease forwards;
+}
 
-    .card-image {
-      width: 100%;
-      height: 180px;
-      object-fit: cover;
-      transition: opacity 0.4s ease, filter 0.4s ease;
-    }
+.popup-content {
+  background: var(--card-bg);
+  color: var(--card-text);
+  border-radius: 12px;
+  max-width: 90%;
+  max-height: 90%;
+  overflow-y: auto;
+  padding: 20px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  position: relative;
+  animation: scaleIn 0.3s ease forwards;
+}
 
-    .card-content {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-color: rgba(0,0,0,0.5);
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      box-sizing: border-box;
-      opacity: 0;
-      transition: opacity 0.4s ease;
-      z-index: 2;
-      pointer-events: none;
-    }
+.popup-content img {
+  width: 100%;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
 
-    .card.show-details .card-content {
-      opacity: 1;
-      pointer-events: auto;
-    }
+.popup-content h3 {
+  margin: 10px 0 5px;
+}
 
-    .card h3, .card p {
-      color: white;
-      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
-      margin: 4px 0;
-    }
+.popup-content p {
+  line-height: 1.6;
+}
 
-    .card-content .btn {
-      margin-top: 6px;
-      padding: 6px 12px;
-      background-color: #3498db;
-      border: none;
-      border-radius: 4px;
-      color: white;
-      font-size: 14px;
-      cursor: pointer;
-    }
+.popup-content .btn {
+  display: inline-block;
+  margin-top: 12px;
+  background: #3498db;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
-    .card-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-size: cover;
-      background-position: center;
-      opacity: 0;
-      filter: blur(var(--blur-intensity));
-      transition: opacity 0.4s ease;
-      z-index: 1;
-    }
+.popup-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 20px;
+  color: #888;
+  cursor: pointer;
+}
 
-    .card.show-details .card-bg {
-      opacity: 1;
-    }
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
 
-    .sidebar {
-      position: fixed;
-      top: 0;
-      right: -250px;
-      width: 250px;
-      height: 100%;
-      background: var(--sidebar-bg);
-      color: var(--sidebar-text);
-      box-shadow: var(--sidebar-shadow);
-      transition: right 0.3s ease;
-      z-index: 999;
-      padding: 20px;
-      box-sizing: border-box;
-    }
+@keyframes scaleIn {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
 
-    .sidebar.open {
-      right: 0;
-    }
-
-    .sidebar-toggle-btn {
-      position: fixed;
-      top: 50%;
-      right: 10px;
-      transform: translateY(-50%);
-      width: 40px;
-      height: 40px;
-      background: var(--sidebar-bg);
-      color: var(--sidebar-text);
-      border-radius: 50%;
-      border: 1px solid var(--divider);
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 20px;
-      cursor: pointer;
-      z-index: 1000;
-    }
-
-    .sidebar-button {
-      width: 100%;
-      padding: 12px 16px;
-      margin-bottom: 10px;
-      background: #3498db;
-      color: white;
-      border: none;
-      border-radius: 6px;
-      cursor: pointer;
-      text-align: left;
-      font-size: 16px;
-    }
-
-    .music-player {
-      position: fixed;
-      bottom: 80px;
-      right: 20px;
-      width: 350px;
-      height: 430px;
-      background: var(--card-bg);
-      border-radius: 12px;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transform: translateY(150%);
-      transition: transform 0.4s ease;
-      z-index: 998;
-    }
-
-    .music-player.show {
-      transform: translateY(0);
-    }
-
-    .music-close {
-      position: absolute;
-      top: 6px;
-      right: 10px;
-      font-size: 20px;
-      color: #888;
-      cursor: pointer;
-    }
   </style>
 </head>
 <body>
-  <h1>2025年毕业视频档案库</h1>
-
-  <div class="section-title">老师</div>
-  <div class="container">
-    <div class="card" onclick="toggleDetails(this)">
-      <img class="card-image" src="https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg" />
-      <div class="card-bg" style="background-image: url('https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg');"></div>
-      <div class="card-content">
-        <h3>司臻</h3>
-        <p>班主任</p>
-        <p>故事：用戒尺教育张扬。</p>
-        <button class="btn" onclick="event.stopPropagation(); window.open('https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg')">查看原图</button>
-        <button class="btn" onclick="event.stopPropagation(); window.location.href='https://example.com/detail1'">跳转详情</button>
-      </div>
+  <h1>2025年毕业视频档案库</h1>  <div class="container">
+    <div class="card" onclick="showPopup('司臻', '班主任', '用戒尺教育张扬。', 'https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg')">
+      <img src="https://p1.itc.cn/images01/20230522/bb15ff216758464bbaa02702a9618e9f.jpeg" alt="司臻">
     </div>
-  </div>
-
-  <div class="section-title">11班</div>
-  <div class="container">
-    <div class="card" onclick="toggleDetails(this)">
-      <img class="card-image" src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" />
-      <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png');"></div>
-      <div class="card-content">
-        <h3>徐子轩</h3>
-        <p>学生</p>
-        <p>体育表现一般。</p>
-        <button class="btn" onclick="event.stopPropagation(); window.open('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png')">查看原图</button>
-        <button class="btn" onclick="event.stopPropagation(); window.location.href='https://example.com/detail2'">跳转详情</button>
-      </div>
+    <div class="card" onclick="showPopup('徐子轩', '学生', '体育表现一般。', 'https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png')">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩">
     </div>
-  </div>
-
-  <div class="sidebar-toggle-btn" onclick="toggleSidebar()">≡</div>
-  <div class="sidebar" id="sidebar">
-    <button class="sidebar-button" onclick="toggleDark()">🌙 夜间模式</button>
-    <button class="sidebar-button" onclick="toggleMusic()">🎵 音乐播放器</button>
-    <button class="sidebar-button" onclick="togglek()">❉ 关于作者</button>
-  </div>
-
-  <div class="music-player" id="musicPlayer">
-    <div class="music-close" onclick="toggleMusic()">❌</div>
-    <iframe src="https://music.163.com/outchain/player?type=0&id=1371606416&auto=0&height=430" width="100%" height="100%" frameborder="0"></iframe>
-  </div>
-
-  <script>
-    function toggleDetails(card) {
-      card.classList.toggle("show-details");
-      const img = card.querySelector('.card-image');
-      if (card.classList.contains("show-details")) {
-        img.style.opacity = "0";
-        img.style.filter = "blur(5px)";
-      } else {
-        img.style.opacity = "1";
-        img.style.filter = "none";
-      }
+  </div>  <!-- Popup Layer -->  <div class="popup-overlay" id="popup">
+    <div class="popup-content" id="popupContent">
+      <span class="popup-close" onclick="closePopup()">✖</span>
+      <img id="popupImg" src="" alt="">
+      <h3 id="popupName"></h3>
+      <p id="popupRole"></p>
+      <p id="popupStory"></p>
+      <a id="popupLink" href="#" class="btn" target="_blank">查看原图</a>
+    </div>
+  </div>  <script>
+    function showPopup(name, role, story, imageUrl) {
+      document.getElementById('popupName').innerText = name;
+      document.getElementById('popupRole').innerText = role;
+      document.getElementById('popupStory').innerText = story;
+      document.getElementById('popupImg').src = imageUrl;
+      document.getElementById('popupLink').href = imageUrl;
+      document.getElementById('popup').style.display = 'flex';
     }
 
-    function toggleDark() {
-      document.body.classList.toggle("dark");
+    function closePopup() {
+      document.getElementById('popup').style.display = 'none';
     }
 
-    function togglek() {
-      window.location.href = "https://355520841.github.io/author.html";
-    }
-
-    function toggleMusic() {
-      const box = document.getElementById("musicPlayer");
-      box.classList.toggle("show");
-    }
-
-    function toggleSidebar() {
-      const sidebar = document.getElementById("sidebar");
-      sidebar.classList.toggle("open");
-    }
-  </script>
-</body>
+    // 可选：点击背景关闭弹窗
+    document.getElementById('popup').addEventListener('click', function(e) {
+      if (e.target === this) closePopup();
+    });
+  </script></body>
 </html>
