@@ -162,12 +162,14 @@
   </style>
 </head>
 <body>
-  <h1>2025年毕业视频档案库</h1>
+  <h1>2025年毕业档案</h1>
+  
 
   <!-- 工具按钮区域 -->
   <div class="tools">
     <div class="tool-btn" onclick="toggleDark()">🌙 夜间</div>
     <div class="tool-btn" onclick="toggleMusic()">🎵 音乐</div>
+    <div class="tool-btn" onclick="togglek()">作者</div>
   </div>
 
   <!-- 音乐播放器 -->
@@ -190,6 +192,8 @@
     <div class="card" data-name="张家林" data-role="学生" data-desc="迈克尔杰克逊。" data-img="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg"></div>
 
   </div>
+  
+
 
   <script>
     // 初始化卡片
@@ -220,6 +224,7 @@
           card.classList.toggle("show");
         });
       });
+      alert('注意：本页面中的肖像仅做纪念使用，未经授权禁止使用。');
     }
 
     function toggleDark() {
@@ -229,7 +234,9 @@
     function toggleMusic() {
       document.getElementById("musicPlayer").classList.toggle("show");
     }
-
+    function togglek() {
+    window.location.href = "https://355520841.github.io/author.html";
+    }
     createCards();
   </script>
 </body>
