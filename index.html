@@ -71,7 +71,8 @@
       width: 100%;
       height: 200px;
       object-fit: cover;
-      transition: opacity 0.4s ease, transform 0.4s ease;
+      display: block;
+      z-index: 0;
     }
 
     .card h3 {
@@ -105,31 +106,25 @@
       transform: scale(0.95);
     }
 
-    /* 详情区域样式 */
     .details-container {
-      position: relative;
-      height: 200px; /* 初始高度与图片相同 */
+      max-height: 0;
       overflow: hidden;
-      transition: height 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      transition: max-height 0.5s ease;
     }
 
     .card.show-details .details-container {
-      height: auto; /* 展开后高度自适应 */
-      min-height: 200px; /* 确保至少和图片一样高 */
+      max-height: 500px;
     }
 
     .card-bg {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
       background-size: cover;
       background-position: center;
-      opacity: 0;
-      transition: opacity 0.4s ease;
       filter: blur(var(--blur-intensity));
-      z-index: -1;
+      opacity: 0;
+      height: 200px;
+      transition: opacity 0.4s ease;
+      position: relative;
+      z-index: 0;
     }
 
     .card.show-details .card-bg {
@@ -138,12 +133,11 @@
 
     .details-content {
       position: relative;
-      padding: 80px 16px 16px; /* 上边距留出背景图空间 */
+      padding: 16px;
       z-index: 1;
       opacity: 0;
       transform: translateY(20px);
-      transition: opacity 0.4s ease 0.1s, 
-                  transform 0.4s ease 0.1s;
+      transition: opacity 0.4s ease, transform 0.4s ease;
     }
 
     .card.show-details .details-content {
@@ -156,12 +150,11 @@
       color: var(--card-text);
     }
 
-    /* 夜间模式按钮 */
-    .night-toggle {
+    .night-toggle,
+    .music-toggle {
       position: fixed;
       bottom: 20px;
-      right: 80px;
-      z-index: 1000;
+      z-index: 9999;
       padding: 8px 12px;
       background: #444;
       color: white;
@@ -171,29 +164,20 @@
       transition: background 0.3s ease, transform 0.2s ease;
     }
 
-    .night-toggle:hover {
-      background: #555;
-      transform: scale(1.05);
+    .night-toggle {
+      right: 80px;
     }
 
-    /* 音乐按钮 */
     .music-toggle {
-      position: fixed;
-      bottom: 20px;
       right: 20px;
       background: #3498db;
-      color: white;
-      padding: 10px 12px;
-      border-radius: 8px;
-      cursor: pointer;
-      z-index: 999;
       font-size: 16px;
       box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
-      transition: background 0.3s ease, transform 0.2s ease;
     }
 
+    .night-toggle:hover,
     .music-toggle:hover {
-      background: #2980b9;
+      background: #555;
       transform: scale(1.05);
     }
 
@@ -207,9 +191,9 @@
       border-radius: 12px;
       overflow: hidden;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       transform: translateY(150%);
-      z-index: 998;
+      z-index: 9998;
+      transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .music-player.show {
@@ -235,10 +219,10 @@
 <body>
   <h1>2025年毕业视频档案库</h1>
 
-  <!-- 👨‍🏫 老师类 -->
   <div class="section-title">老师</div>
   <div class="container">
     <div class="card">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻" />
       <div class="details-container">
         <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg');"></div>
         <div class="details-content">
@@ -247,15 +231,14 @@
           <p>戒尺战神。[故事 具张扬同学以及刘芳的描述这位老师曾用戒尺把张扬打活]</p>
         </div>
       </div>
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻" />
       <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
     </div>
   </div>
 
-  <!-- 🧑‍🎓 11班类 -->
   <div class="section-title">11班</div>
   <div class="container">
     <div class="card">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩" />
       <div class="details-container">
         <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png');"></div>
         <div class="details-content">
@@ -264,11 +247,11 @@
           <p>在体育方面表现不优异，没有获得过多项校内比赛奖项。</p>
         </div>
       </div>
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩" />
       <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
     </div>
 
     <div class="card">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林" />
       <div class="details-container">
         <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg');"></div>
         <div class="details-content">
@@ -277,15 +260,14 @@
           <p>迈克尔杰克逊。</p>
         </div>
       </div>
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林" />
       <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
     </div>
   </div>
 
-  <!-- 🎒 12班 -->
   <div class="section-title">12班</div>
   <div class="container">
     <div class="card">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽" />
       <div class="details-container">
         <div class="card-bg" style="background-image: url('https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg');"></div>
         <div class="details-content">
@@ -294,18 +276,13 @@
           <p>性格开朗，积极的想当班长。[故事 刘芳说过，他因为没当上班长而躺在地上装死]</p>
         </div>
       </div>
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽" />
       <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
     </div>
   </div>
 
-  <!-- 夜间模式按钮 -->
   <div class="night-toggle" onclick="toggleDark()">🌙 夜间</div>
-
-  <!-- 音乐按钮 -->
   <div class="music-toggle" onclick="toggleMusic()">🎵 音乐</div>
 
-  <!-- 网易云音乐播放器 -->
   <div class="music-player" id="musicPlayer">
     <div class="music-close" onclick="toggleMusic()">❌</div>
     <iframe
@@ -318,16 +295,17 @@
     ></iframe>
   </div>
 
-  <!-- 脚本 -->
   <script>
     function toggleDetails(btn) {
       const card = btn.closest(".card");
-      card.classList.toggle("show-details");
+      const isActive = card.classList.contains("show-details");
+
+      // 关闭所有卡片
+      document.querySelectorAll(".card").forEach(c => c.classList.remove("show-details"));
       
-      // 如果需要，可以在这里添加逻辑来隐藏其他展开的卡片
-      // 例如：document.querySelectorAll('.card.show-details').forEach(c => {
-      //   if (c !== card) c.classList.remove('show-details');
-      // });
+      if (!isActive) {
+        card.classList.add("show-details");
+      }
     }
 
     function toggleDark() {
@@ -335,8 +313,7 @@
     }
 
     function toggleMusic() {
-      const box = document.getElementById("musicPlayer");
-      box.classList.toggle("show");
+      document.getElementById("musicPlayer").classList.toggle("show");
     }
   </script>
 </body>
