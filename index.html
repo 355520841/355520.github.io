@@ -57,15 +57,17 @@
       margin-bottom: 10px;
     }
     .details {
-      display: none;
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
       background: #fff;
-      padding: 10px;
-      border-top: 1px solid #eee;
+      padding: 0 10px;
       font-size: 0.9em;
       color: #444;
     }
     .card.active .details {
-      display: block;
+      max-height: 100px;
+      padding: 10px;
     }
   </style>
   <script>
@@ -75,32 +77,32 @@
   </script>
 </head>
 <body>
-  <h1>2025年同学视频档案库</h1>  <!-- 👨‍🏫 老师类 -->  <div class="section-title">老师</div>
+  <h1>2025年毕业纪念档案库</h1>  <!-- 👨‍🏫 老师类 -->  <div class="section-title">老师</div>
   <div class="container">
     <div class="card" onclick="toggleDetails(this)">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻">
       <h3>司臻</h3>
-      <p>班主任 · 初三12班</p>
+      <p>班主任</p>
       <div class="details">暂无黑历史视频</div>
     </div>
-  </div>  <!-- 🧑‍🎓 11班类 -->  <div class="section-title">初三·11班</div>
+  </div>  <!-- 🧑‍🎓 11班类 -->  <div class="section-title">11班</div>
   <div class="container">
     <div class="card" onclick="toggleDetails(this)">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩">
       <h3>徐子轩</h3>
-      <p>初三·11班</p>
+      <p>11班</p>
       <div class="details">视频：暂无链接</div>
     </div>
     <div class="card" onclick="toggleDetails(this)">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林">
       <h3>张家林</h3>
-      <p>初三·11班</p>
+      <p>11班</p>
       <div class="details">黑历史视频：<a href="#">点击播放</a></div>
     </div>
     <div class="card" onclick="toggleDetails(this)">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="李乐">
       <h3>李乐</h3>
-      <p>初三·11班</p>
+      <p>11班</p>
       <div class="details">无视频记录</div>
     </div>
   </div>  <!-- 🎒 12班 -->  <div class="section-title">12班</div>
@@ -108,7 +110,7 @@
     <div class="card" onclick="toggleDetails(this)">
       <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽">
       <h3>鲍泽</h3>
-      <p>初三·12班</p>
+      <p>12班</p>
       <div class="details">暂无记录</div>
     </div>
   </div>
