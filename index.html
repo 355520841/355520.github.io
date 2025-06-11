@@ -1,4 +1,5 @@
-<!DOCTYPE html><html lang="zh">
+<!DOCTYPE html>
+<html lang="zh">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -10,210 +11,237 @@
       --card-bg: white;
       --card-text: #444;
       --divider: #ccc;
-    }body.dark {
-  --bg: #181818;
-  --text: #f0f0f0;
-  --card-bg: #2c2c2c;
-  --card-text: #e0e0e0;
-  --divider: #444;
-}
+    }
 
-body {
-  font-family: "Segoe UI", sans-serif;
-  background: var(--bg);
-  color: var(--text);
-  margin: 0;
-  padding: 20px;
-  transition: background 0.4s ease, color 0.4s ease;
-}
+    body.dark {
+      --bg: #181818;
+      --text: #f0f0f0;
+      --card-bg: #2c2c2c;
+      --card-text: #e0e0e0;
+      --divider: #444;
+    }
 
-h1 {
-  text-align: center;
-  margin-bottom: 40px;
-}
+    body {
+      font-family: "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      margin: 0;
+      padding: 20px;
+      transition: background 0.3s, color 0.3s;
+    }
 
-.section-title {
-  font-size: 1.4em;
-  margin: 40px 0 10px;
-  border-bottom: 2px solid var(--divider);
-  padding-bottom: 6px;
-}
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+    }
 
-.container {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
+    .section-title {
+      font-size: 1.4em;
+      margin: 40px 0 10px;
+      border-bottom: 2px solid var(--divider);
+      padding-bottom: 6px;
+    }
 
-.card {
-  background: var(--card-bg);
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-  overflow: hidden;
-  position: relative;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+    .container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 16px;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
 
-.card:hover {
-  transform: scale(1.03);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-}
+    .card {
+      background: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      overflow: hidden;
+      text-align: center;
+      position: relative;
+      transition: transform 0.2s ease;
+    }
 
-.card img.thumb {
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  position: absolute;
-  top: 10px;
-  left: 10px;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
-}
+    .card:hover {
+      transform: scale(1.02);
+    }
 
-.card-content {
-  padding: 20px;
-  padding-left: 100px;
-  box-sizing: border-box;
-}
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
 
-.card h3 {
-  margin: 0 0 6px;
-}
+    .card h3 {
+      margin: 10px 0 5px;
+    }
 
-.card p {
-  color: var(--card-text);
-  font-size: 0.9em;
-  margin: 4px 0 12px;
-}
+    .card p {
+      color: var(--card-text);
+      font-size: 0.9em;
+      margin-bottom: 10px;
+    }
 
-.details {
-  max-height: 0;
-  overflow: hidden;
-  transition: max-height 0.6s ease, padding 0.6s ease;
-  background: rgba(255, 255, 255, 0.85);
-  backdrop-filter: blur(8px);
-  padding: 0 20px;
-}
+    .details {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.5s ease;
+      background: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 0 10px;
+    }
 
-.card.show-details .details {
-  max-height: 400px;
-  padding: 10px 20px 20px;
-}
+    .card.show-details .details {
+      max-height: 200px;
+      padding: 10px;
+    }
 
-.toggle-btn {
-  background: #3498db;
-  color: white;
-  border: none;
-  padding: 6px 12px;
-  border-radius: 6px;
-  cursor: pointer;
-  margin-bottom: 10px;
-}
+    .toggle-btn {
+      background: #3498db;
+      color: white;
+      border: none;
+      padding: 6px 12px;
+      border-radius: 6px;
+      margin-bottom: 10px;
+      cursor: pointer;
+    }
 
-.night-toggle, .music-toggle {
-  position: fixed;
-  bottom: 20px;
-  z-index: 1000;
-  padding: 8px 12px;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 14px;
-}
+    /* 夜间模式按钮 */
+    .night-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 80px;
+      z-index: 1000;
+      padding: 8px 12px;
+      background: #444;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 14px;
+    }
 
-.night-toggle {
-  right: 80px;
-  background: #444;
-  color: white;
-}
+    /* 音乐按钮 */
+    .music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #3498db;
+      color: white;
+      padding: 10px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      z-index: 999;
+      font-size: 16px;
+      box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+    }
 
-.music-toggle {
-  right: 20px;
-  background: #3498db;
-  color: white;
-}
+    .music-player {
+      position: fixed;
+      bottom: 80px;
+      right: 20px;
+      width: 350px;
+      height: 430px;
+      background: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+      transition: transform 0.4s ease;
+      transform: translateY(150%);
+      z-index: 998;
+    }
 
-.music-player {
-  position: fixed;
-  bottom: 80px;
-  right: 20px;
-  width: 350px;
-  height: 430px;
-  background: var(--card-bg);
-  border-radius: 12px;
-  overflow: hidden;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transition: transform 0.4s ease;
-  transform: translateY(150%);
-  z-index: 998;
-}
+    .music-player.show {
+      transform: translateY(0);
+    }
 
-.music-player.show {
-  transform: translateY(0);
-}
+    .music-close {
+      position: absolute;
+      top: 6px;
+      right: 10px;
+      color: #888;
+      cursor: pointer;
+      font-size: 20px;
+    }
 
-.music-close {
-  position: absolute;
-  top: 6px;
-  right: 10px;
-  color: #888;
-  cursor: pointer;
-  font-size: 20px;
-}
-
-.music-close:hover {
-  color: #f55;
-}
-
+    .music-close:hover {
+      color: #f55;
+    }
   </style>
 </head>
 <body>
-  <h1>2025年毕业视频档案库</h1>  <div class="section-title">老师</div>
+  <h1>2025年毕业视频档案库</h1>
+
+  <!-- 👨‍🏫 老师类 -->
+  <div class="section-title">老师</div>
   <div class="container">
     <div class="card">
-      <img class="thumb" src="https://fs-im-kefu.7moor-fs1.com/...jpg" alt="司臻" />
-      <div class="card-content">
-        <h3>司臻</h3>
-        <p>班主任</p>
-        <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-        <div class="details">
-          <p>故事：戒尺战神\n曾经</p>
-        </div>
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻" />
+      <h3>司臻</h3>
+      <p>班主任</p>
+      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
+      <div class="details">
+        <p>戒尺战神。[故事 具张扬同学以及刘芳的描述这位老师曾用戒尺把张扬打活]</p>
       </div>
     </div>
-  </div>  <div class="section-title">11班</div>
+  </div>
+
+  <!-- 🧑‍🎓 11班类 -->
+  <div class="section-title">11班</div>
   <div class="container">
     <div class="card">
-      <img class="thumb" src="https://fs-im-kefu.7moor-fs1.com/...png" alt="徐子轩" />
-      <div class="card-content">
-        <h3>徐子轩</h3>
-        <p>学生</p>
-        <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-        <div class="details">
-          <p>简介：在体育方面表现不优异。</p>
-        </div>
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩" />
+      <h3>徐子轩</h3>
+      <p>学生</p>
+      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
+      <div class="details">
+        <p>在体育方面表现不优异，没有获得过多项校内比赛奖项。</p>
       </div>
     </div>
-    <!-- 更多卡片可继续添加 -->
-  </div>  <div class="section-title">12班</div>
+
+    <div class="card">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林" />
+      <h3>张家林</h3>
+      <p>学生</p>
+      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
+      <div class="details">
+        <p>迈克尔杰克逊。</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- 🎒 12班 -->
+  <div class="section-title">12班</div>
   <div class="container">
     <div class="card">
-      <img class="thumb" src="https://fs-im-kefu.7moor-fs1.com/...jpg" alt="鲍泽" />
-      <div class="card-content">
-        <h3>鲍泽</h3>
-        <p>学生</p>
-        <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
-        <div class="details">
-          <p>简介：积极想当班长，曾因落选装死。</p>
-        </div>
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽" />
+      <h3>鲍泽</h3>
+      <p>学生</p>
+      <button class="toggle-btn" onclick="toggleDetails(this)">查看详情</button>
+      <div class="details">
+        <p>性格开朗，积极的想当班长。[故事 刘芳说过，他因为没当上班长而躺在地上装死]</p>
       </div>
     </div>
-  </div>  <div class="night-toggle" onclick="toggleDark()">🌙 夜间</div>
-  <div class="music-toggle" onclick="toggleMusic()">🎵 音乐</div>  <div class="music-player" id="musicPlayer">
+  </div>
+
+  <!-- 夜间模式按钮 -->
+  <div class="night-toggle" onclick="toggleDark()">🌙 夜间</div>
+
+  <!-- 音乐按钮 -->
+  <div class="music-toggle" onclick="toggleMusic()">🎵 音乐</div>
+
+  <!-- 网易云音乐播放器 -->
+  <div class="music-player" id="musicPlayer">
     <div class="music-close" onclick="toggleMusic()">❌</div>
-    <iframe frameborder="no" marginwidth="0" marginheight="0" width="100%" height="100%" src="https://music.163.com/outchain/player?type=0&id=1371606416&auto=0&height=430"></iframe>
-  </div>  <script>
+    <iframe
+      frameborder="no"
+      marginwidth="0"
+      marginheight="0"
+      width="100%"
+      height="100%"
+      src="https://music.163.com/outchain/player?type=0&id=1371606416&auto=0&height=430"
+    ></iframe>
+  </div>
+
+  <!-- 脚本 -->
+  <script>
     function toggleDetails(btn) {
       const card = btn.closest(".card");
       card.classList.toggle("show-details");
@@ -224,7 +252,9 @@ h1 {
     }
 
     function toggleMusic() {
-      document.getElementById("musicPlayer").classList.toggle("show");
+      const box = document.getElementById("musicPlayer");
+      box.classList.toggle("show");
     }
-  </script></body>
+  </script>
+</body>
 </html>
