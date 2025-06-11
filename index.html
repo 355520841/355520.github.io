@@ -5,24 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>2025年视频档案库</title>
   <style>
+    :root {
+      --bg-color: #f0f2f5;
+      --text-color: #222;
+      --section-border: #ccc;
+      --card-bg: white;
+      --card-shadow: rgba(0, 0, 0, 0.08);
+      --link-color: #3498db;
+      --link-hover: #217dbb;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #121212;
+      --text-color: #eee;
+      --section-border: #444;
+      --card-bg: #1e1e1e;
+      --card-shadow: rgba(0, 0, 0, 0.6);
+      --link-color: #4eaaff;
+      --link-hover: #82bbff;
+    }
+
     body {
       font-family: "Segoe UI", sans-serif;
-      background: #f0f2f5;
+      background: var(--bg-color);
+      color: var(--text-color);
       margin: 0;
       padding: 20px;
+      transition: background 0.3s, color 0.3s;
     }
 
     h1 {
       text-align: center;
-      color: #222;
       margin-bottom: 40px;
     }
 
     .section-title {
       font-size: 1.4em;
-      color: #333;
+      color: var(--text-color);
       margin: 40px 0 10px;
-      border-bottom: 2px solid #ccc;
+      border-bottom: 2px solid var(--section-border);
       padding-bottom: 6px;
     }
 
@@ -35,12 +56,12 @@
     }
 
     .card {
-      background: white;
+      background: var(--card-bg);
       border-radius: 12px;
-      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 6px var(--card-shadow);
       overflow: hidden;
       text-align: center;
-      transition: transform 0.2s ease;
+      transition: transform 0.2s ease, background 0.3s;
     }
 
     .card:hover {
@@ -64,15 +85,20 @@
       margin-bottom: 10px;
     }
 
+    [data-theme="dark"] .card p {
+      color: #aaa;
+    }
+
     .card a {
       display: inline-block;
       margin-bottom: 12px;
-      color: #3498db;
+      color: var(--link-color);
       text-decoration: none;
     }
 
     .card a:hover {
       text-decoration: underline;
+      color: var(--link-hover);
     }
 
     /* 关于作者按钮 */
@@ -88,21 +114,83 @@
       text-decoration: none;
       box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
       z-index: 999;
+      transition: background 0.3s;
     }
 
     .author-button:hover {
       background: rgba(0, 0, 0, 0.75);
+    }
+
+    /* 夜间模式按钮 */
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--card-bg);
+      color: var(--text-color);
+      border: 1.5px solid var(--section-border);
+      padding: 8px 12px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      box-shadow: 0 2px 6px var(--card-shadow);
+      z-index: 1000;
+      user-select: none;
+      transition: background 0.3s, color 0.3s, border-color 0.3s;
+    }
+
+    .dark-mode-toggle:hover {
+      background: var(--link-color);
+      color: white;
+      border-color: var(--link-color);
+    }
+
+    /* 网易云音乐播放器悬浮 */
+    .music-player {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 350px;
+      height: 430px;
+      box-shadow: -4px 0 12px rgba(0, 0, 0, 0.2);
+      border-radius: 12px 0 0 12px;
+      overflow: hidden;
+      background: var(--card-bg);
+      z-index: 1000;
+      transition: background 0.3s;
+    }
+
+    [data-theme="dark"] .music-player {
+      background: #222;
+    }
+
+    /* iframe 填满 */
+    .music-player iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* 响应式 - 手机时隐藏播放器 */
+    @media (max-width: 768px) {
+      .music-player {
+        display: none;
+      }
     }
   </style>
 </head>
 <body>
   <h1>2025年同学视频档案库</h1>
 
+  <!-- 夜间模式切换按钮 -->
+  <button class="dark-mode-toggle" id="darkModeToggle">切换夜间模式</button>
+
   <!-- 👨‍🏫 老师类 -->
   <div class="section-title">老师</div>
   <div class="container">
     <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="司臻" />
       <h3>司臻</h3>
       <p>班主任 · 12班</p>
       <a href="#">查看详情</a>
@@ -113,19 +201,19 @@
   <div class="section-title">11班</div>
   <div class="container">
     <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629823919/IMG_SEGMENT_20250528_004632.png" alt="徐子轩" />
       <h3>徐子轩</h3>
       <p>11班</p>
       <a href="#">查看详情</a>
     </div>
     <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749629953186/IMG_20250118_082801.jpg" alt="张家林" />
       <h3>张家林</h3>
       <p>11班</p>
       <a href="#">查看详情</a>
     </div>
     <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="李乐">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="李乐" />
       <h3>李乐</h3>
       <p>11班</p>
       <a href="#">查看详情</a>
@@ -136,7 +224,7 @@
   <div class="section-title">12班</div>
   <div class="container">
     <div class="card">
-      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽">
+      <img src="https://fs-im-kefu.7moor-fs1.com/ly/4d2c3f00-7d4c-11e5-af15-41bf63ae4ea0/1749630159565/mmexport1749615670585.jpg" alt="鲍泽" />
       <h3>鲍泽</h3>
       <p>12班</p>
       <a href="#">查看详情</a>
@@ -145,5 +233,42 @@
 
   <!-- 关于作者按钮 -->
   <a class="author-button" href="author.html">关于作者</a>
+
+  <!-- 网易云音乐播放器 -->
+  <div class="music-player" title="网易云音乐播放器">
+    <iframe
+      frameborder="no"
+      border="0"
+      marginwidth="0"
+      marginheight="0"
+      width="100%"
+      height="430"
+      src="https://music.163.com/outchain/player?type=0&id=1371606416&auto=1&height=430"
+      allow="autoplay"
+    ></iframe>
+  </div>
+
+  <script>
+    const toggleBtn = document.getElementById("darkModeToggle");
+    const root = document.documentElement;
+
+    // 初始化根据本地存储读取主题
+    if (localStorage.getItem("theme") === "dark") {
+      root.setAttribute("data-theme", "dark");
+      toggleBtn.textContent = "切换日间模式";
+    }
+
+    toggleBtn.addEventListener("click", () => {
+      if (root.getAttribute("data-theme") === "dark") {
+        root.removeAttribute("data-theme");
+        toggleBtn.textContent = "切换夜间模式";
+        localStorage.setItem("theme", "light");
+      } else {
+        root.setAttribute("data-theme", "dark");
+        toggleBtn.textContent = "切换日间模式";
+        localStorage.setItem("theme", "dark");
+      }
+    });
+  </script>
 </body>
 </html>
