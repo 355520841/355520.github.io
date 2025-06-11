@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <title>作者介绍 - 同学录</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    body {
+      margin: 0;
+      font-family: "Segoe UI", "PingFang SC", sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #2a2a3d);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+
+    .author-card {
+      backdrop-filter: blur(12px);
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 20px;
+      padding: 30px;
+      max-width: 400px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.2);
+      animation: fadeIn 1s ease;
+    }
+
+    .author-card img {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid #fff;
+      margin-bottom: 20px;
+    }
+
+    .author-card h2 {
+      margin: 0;
+      font-size: 1.8em;
+    }
+
+    .author-card p {
+      margin: 10px 0 20px;
+      font-size: 1em;
+      color: #ddd;
+    }
+
+    .author-links a {
+      color: #61dafb;
+      text-decoration: none;
+      margin: 0 10px;
+      font-size: 1.1em;
+      transition: color 0.2s;
+    }
+
+    .author-links a:hover {
+      color: #fff;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.96); }
+      to   { opacity: 1; transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+  <div class="author-card">
+    <img src="https://avatars.githubusercontent.com/u/355520841?v=4" alt="作者头像">
+    <h2>作者：莉莉</h2>
+    <p>热爱编程与设计，独立开发本项目。<br>未来梦想做出属于自己的操作系统和游戏。</p>
+    <div class="author-links">
+      <a href="mailto:example@email.com">邮箱</a>
+      <a href="https://github.com/355520841" target="_blank">GitHub</a>
+      <a href="index.html">返回首页</a>
+    </div>
+  </div>
+</body>
+</html>
